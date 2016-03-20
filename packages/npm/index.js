@@ -2,9 +2,7 @@
  * LoadJS
  */
 
-var doc = document,
-    head = doc.head,
-    devnull = function() {},
+var devnull = function() {},
     bundleIdCache = {},
     bundleResultCache = {},
     bundleCallbackQueue = {};
@@ -81,7 +79,9 @@ function publish(bundleId, pathsNotFound) {
  * @param {Function} callbackFn - The callback function
  */
 function loadScript(path, callbackFn) {
-  var s = doc.createElement('script');
+  var doc = document,
+      s = doc.createElement('script');
+
   s.src = path;
   
   s.onload = s.onerror = function(ev) {
@@ -97,7 +97,7 @@ function loadScript(path, callbackFn) {
   };
   
   // add to document
-  head.appendChild(s);
+  doc.head.appendChild(s);
 }
 
 
