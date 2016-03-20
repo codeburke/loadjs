@@ -2,7 +2,7 @@
 
 <img src="https://www.muicss.com/static/images/loadjs.svg" width="250px">
 
-LoadJS is a tiny async loader for modern browsers (536 bytes).
+LoadJS is a tiny async loader for modern browsers.
 
 [![Dependency Status](https://david-dm.org/muicss/loadjs.svg)](https://david-dm.org/muicss/loadjs)
 [![devDependency Status](https://david-dm.org/muicss/loadjs/dev-status.svg)](https://david-dm.org/muicss/loadjs#info=devDependencies)
@@ -11,7 +11,7 @@ LoadJS is a tiny async loader for modern browsers (536 bytes).
 
 LoadJS is a tiny async loading library for modern browsers (IE9+). It has a simple yet powerful dependency management system that lets you fetch files in parallel and execute code after the dependencies have been met. The recommended way to use LoadJS is to include the minified source code in your &lt;html&gt; and then use the `loadjs` global to manage JavaScript dependencies after pageload.
 
-LoadJS is based on the excellent <a href="https://github.com/ded/script.js">$script</a> library by <a href="https://github.com/ded">Dustin Diaz</a>. We kept the behavior of the library the same but we re-wrote the code from scratch to add support for success/failure callbacks and to optimize the library for modern browsers. LoadJS is 536 bytes (minified + gzipped).
+LoadJS is based on the excellent <a href="https://github.com/ded/script.js">$script</a> library by <a href="https://github.com/ded">Dustin Diaz</a>. We kept the behavior of the library the same but we re-wrote the code from scratch to add support for success/failure callbacks and to optimize the library for modern browsers.
 
 Here's an example of what you can do with LoadJS:
 
@@ -24,10 +24,6 @@ loadjs.ready('foobar', function() {
   // foo.js & bar.js loaded
 });
 ```
-
-The latest version of LoadJS can be found in the `packages/dist/` directory in this repository:
- * [loadjs.js](https://raw.githubusercontent.com/muicss/loadjs/master/pacakges/dist/loadjs.js)
- * [loadjs.min.js](https://raw.githubusercontent.com/muicss/loadjs/master/packages/dist/loadjs.min.js)
 
 ## Browser Support 
 
@@ -42,6 +38,9 @@ The latest version of LoadJS can be found in the `packages/dist/` directory in t
 ## Documentation
 
 ```javascript
+var loadjs = require('loadjs');
+
+
 // load a single file
 loadjs('foo.js', function() {
   // foo.js loaded
@@ -134,89 +133,8 @@ loadjs.ready('jquery', function() {
 
 <pre>
 loadjs/
-├── examples
-│   ├── after-window-onload.html
-│   ├── assets
-│   │   ├── example-error.js
-│   │   ├── file1.js
-│   │   ├── file2.js
-│   │   ├── file3.js
-│   │   ├── loadjs
-│   │   │   ├── loadjs.js
-│   │   │   └── loadjs.min.js
-│   │   └── log.js
-│   ├── before-domcontentloaded.html
-│   ├── before-window-onload.html
-│   └── examples.html
-├── gulpfile.js
+├── index.js
 ├── LICENSE.txt
 ├── package.json
-├── packages
-│   ├── dist
-│   │   ├── loadjs.js
-│   │   └── loadjs.min.js
-│   └── npm
-│       ├── index.js
-│       ├── LICENSE.txt
-│       ├── package.json
-│       └── README.md
-├── README.md
-├── src
-│   ├── loadjs.js
-│   └── loadjs.js.orig
-└── test
+└── README.md
 </pre>
-
-## Development Quickstart
-
-1. Install dependencies
- 
-  * nodejs (http://nodejs.org/)
-  * npm (https://www.npmjs.org/)
-  * http-server (via npm)
-
-1. Clone repository
-
-  ```bash
-  $ git clone git@github.com:muicss/loadjs.git
-  $ cd loadjs
-  ```
-
-1. Install node dependencies using npm
-
-  ```bash
-  $ npm install
-  ```
-
-1. Build examples
-
-  ```bash
-  $ ./node_modules/.bin/gulp examples:build
-  ```
-  
-  To view the examples you can use any static file server. To use the `nodejs` http-server module:
-  
-  ```bash
-  $ npm install http-server
-  $ ./node_modules/.bin/http-server -p 3000
-  ```
-  
-  Then visit http://localhost:3000/examples
-
-1. Build distribution files
-
-  ```bash
-  $ ./node_modules/.bin/gulp dist:build
-  ```
-
-  The files will be located in the `dist` directory.
-
-## Run tests
-
-To run the browser tests first build the `loadjs` library:
-
-```bash
-$ ./node_modules/.bin/gulp test:build
-```
-
-Then visit http://localhost:3000/test
